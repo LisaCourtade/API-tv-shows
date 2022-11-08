@@ -1,26 +1,29 @@
 const form = document.querySelector('#search-form');
-const list = document.querySelector('#list-of-shows');
+const container = document.querySelector('#show-container');
 const input = document.querySelector('#title-searched');
 
 
-const getShows = async function (searchedText) {
-    const result = await axios.get(`https://api.tvmaze.com/search/shows?q=${searchedText}`);
-    const shows = result.data;
-    for (let el of shows) {
-        const newLi = document.createElement('li');
-        newLi.append(el.show.name);
-        list.appendChild(newLi);
-        if (el.show.image) {
-            const newImg = document.createElement('img');
-            newImg.src = el.show.image.medium;
-            list.appendChild(newImg);
-        }
+const getSingleShow = async function (searchedText) {
+    const result = await axios.get(`https://api.tvmaze.com/singlesearch/shows?q=${searchedText}`);
+    const show = result.data;
+    const showName = show.name;
+    const newH2 = document.createElement('h2');
+    newH2.append(showName);
+    container.appendChild(newH2);
+    const showGenres = show.genres;
+    const newP = document.createElement('p');
+    newP.append(showGenres.join(", "));
+    container.appendChild(newP);
+    if (show.image) {
+        const newImg = document.createElement('img');
+        newImg.src = show.image.medium;
+        container.appendChild(newImg);
     }
-    
+
 }
 
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const searchedTitle = input.value;
-    await getShows(searchedTitle);
+    await getSingleShow(searchedTitle);
 })
