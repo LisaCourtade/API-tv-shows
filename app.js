@@ -8,8 +8,13 @@ const getShows = async function (searchedText) {
     const shows = result.data;
     for (let el of shows) {
         const newLi = document.createElement('li');
-        newLi.innerText = el.show.name;
+        newLi.append(el.show.name);
         list.appendChild(newLi);
+        if (el.show.image) {
+            const newImg = document.createElement('img');
+            newImg.src = el.show.image.medium;
+            list.appendChild(newImg);
+        }
     }
     
 }
