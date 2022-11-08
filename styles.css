@@ -1,8 +1,38 @@
 *{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #244f5a;
+    margin: 0;
+}
+
+body {
+    background-color: #bfded3;
 }
 
 h1 {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     text-align: center;
+    background-color: #ebdab8;
+    margin: 0;
 }
+
+#search-form {
+    display: flex;
+    justify-content: center;
+    background-color: #e1a95e;
+}
+
+#title-searched {
+    outline: none;
+    box-shadow: none;
+    border: none;
+    background-color: transparent;
+}
+
+#search-button {
+    outline: none;
+    box-shadow: none;
+    background-color: #e1a95e;
+}
+
+/* #c95e4b; redish color 
+#aa9fa7; purplish color */

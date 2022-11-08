@@ -1,5 +1,5 @@
 const form = document.querySelector('#search-form');
-const container = document.querySelector('#show-container');
+const container = document.querySelector('#result-container');
 const input = document.querySelector('#title-searched');
 
 
