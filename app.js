@@ -1,5 +1,6 @@
 const form = document.querySelector('#search-form');
-const container = document.querySelector('#result-container');
+const imgBox = document.querySelector('#img-container');
+const SumupBox = document.querySelector('#summary-container');
 const input = document.querySelector('#title-searched');
 
 
@@ -10,20 +11,23 @@ const getSingleShow = async function (searchedText) {
         const showName = show.name;
         const newH2 = document.createElement('h2');
         newH2.append(showName);
-        container.appendChild(newH2);
+        imgBox.appendChild(newH2);
         const showGenres = show.genres;
-        const newP = document.createElement('p');
-        newP.append(showGenres.join(", "));
-        container.appendChild(newP);
+        const newGenres = document.createElement('p');
+        newGenres.append(showGenres.join(", "));
+        imgBox.appendChild(newGenres);
+        const showSummary = show.summary;
+        SumupBox.innerHTML = showSummary;
         if (show.image) {
             const newImg = document.createElement('img');
             newImg.src = show.image.medium;
-            container.appendChild(newImg);
+            imgBox.appendChild(newImg);
         }
-    } catch {
+    } catch (e) {
         const newP = document.createElement('p');
         newP.append(`Sorry, no Tv Shows found for ${searchedText}`);
-        container.appendChild(newP) 
+        imgBox.appendChild(newP);
+        console.log(e); 
     }
     
 
@@ -31,8 +35,8 @@ const getSingleShow = async function (searchedText) {
 
 form.addEventListener('submit', async e => {
     e.preventDefault();
-    if (container.innerHTML) {
-        container.innerHTML = '';
+    if (imgBox.innerHTML) {
+        imgBox.innerHTML = '';
     }
     const searchedTitle = input.value;
     await getSingleShow(searchedTitle);
