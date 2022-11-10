@@ -18,6 +18,7 @@ const getSingleShow = async function (searchedText) {
         imgBox.appendChild(newGenres);
         const showSummary = show.summary;
         SumupBox.innerHTML = showSummary;
+        getImdb(showName);
         if (show.image) {
             const newImg = document.createElement('img');
             newImg.src = show.image.medium;
@@ -41,3 +42,15 @@ form.addEventListener('submit', async e => {
     const searchedTitle = input.value;
     await getSingleShow(searchedTitle);
 })
+
+
+const getImdb = async function (title) {
+        const getId = await axios.get(`https://imdb-api.com/en/API/SearchSeries/k_4d794ka6/${title}`);
+        const titleId = getId.data.results[0].id;
+        const getRating = await axios.get(`https://imdb-api.com/en/API/Ratings/k_4d794ka6/${titleId}`);
+        const ImdbRating = getRating.data.imDb;
+        const newH3 = document.createElement('h3');
+        newH3.append(`Imdb: ${ImdbRating}`);
+        imgBox.appendChild(newH3);
+}
+
