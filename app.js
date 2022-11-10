@@ -17,7 +17,9 @@ const getSingleShow = async function (searchedText) {
         newGenres.append(showGenres.join(", "));
         imgBox.appendChild(newGenres);
         const showSummary = show.summary;
-        SumupBox.innerHTML = showSummary;
+        const newSumup = document.createElement('p');
+        newSumup.innerHTML = showSummary;
+        SumupBox.appendChild(newSumup);
         getImdb(showName);
         if (show.image) {
             const newImg = document.createElement('img');
@@ -26,7 +28,7 @@ const getSingleShow = async function (searchedText) {
         }
     } catch (e) {
         const newP = document.createElement('p');
-        newP.append(`Sorry, no Tv Shows found for ${searchedText}`);
+        newP.append(`Sorry, no Tv Shows found for: ${searchedText}.`);
         imgBox.appendChild(newP);
         console.log(e); 
     }
@@ -36,16 +38,17 @@ const getSingleShow = async function (searchedText) {
 
 form.addEventListener('submit', async e => {
     e.preventDefault();
-    if (imgBox.innerHTML) {
+    if (imgBox.innerHTML || SumupBox.innerHTML) {
         imgBox.innerHTML = '';
+        SumupBox.innerHTML = '';
     }
     const searchedTitle = input.value;
     await getSingleShow(searchedTitle);
 })
 
-
+// can only make 100 requests per day
 const getImdb = async function (title) {
-        const getId = await axios.get(`https://imdb-api.com/en/API/SearchSeries/k_4d794ka6/${title}`);
+        const getId = await axios.get(`https://imdb-api.com/en/API/SearchTitle/k_4d794ka6/${title}`);
         const titleId = getId.data.results[0].id;
         const getRating = await axios.get(`https://imdb-api.com/en/API/Ratings/k_4d794ka6/${titleId}`);
         const ImdbRating = getRating.data.imDb;
@@ -53,4 +56,5 @@ const getImdb = async function (title) {
         newH3.append(`Imdb: ${ImdbRating}`);
         imgBox.appendChild(newH3);
 }
+
 
