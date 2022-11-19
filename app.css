@@ -1,9 +1,72 @@
+* {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #244f5a;
+    margin: 0;
+    font-size: 1em;
+}
+
+body {
+    background-color: #bfded3;
+}
+
+h1 {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    text-align: center;
+    font-size: 5em;
+    margin: 0;
+}
+
+#search-form {
+    margin: 0.5em;
+    font-size: 1.5em;
+    height: 2em;
+}
+
+#title-searched {
+    outline: none;
+    box-shadow: none;
+    border: none;
+    border-radius: 8px;
+    background-color: #ebdab8;
+    width: 70%;
+    margin-right: 0.5em;
+    text-indent: 10px;
+}
+
+#search-button {
+    outline: none;
+    background-color: #e1a95e;
+    width: 20%;
+    padding: 0 0.6em;
+    border-radius: 15px;
+    border: none;
+    font-weight: 500;
+
+}
+
+#search-button:hover {
+    background-color: #d6c093;
+}
+
 .list-item {
     list-style: none;
     font-weight: 700;
+    display: inline;
+    
 }
 
 .li-image {
-    width: 300px;
+    width: 250px;
+    height: auto;
+}
+
+.default-li-image {
+    width: 250px;
+    height: auto;
+}
+
+.box-default-li {
+    display: inline-block;
+    width: 250px;
     height: auto;
 }
