@@ -1,0 +1,9 @@
+.list-item {
+    list-style: none;
+    font-weight: 700;
+}
+
+.li-image {
+    width: 300px;
+    height: auto;
+}
