@@ -2,6 +2,7 @@ const form = document.querySelector('#search-form');
 const imgBox = document.querySelector('#img-container');
 const sumUpBox = document.querySelector('#summary-container');
 const input = document.querySelector('#title-searched');
+input.value = '';
 
 
 const getSingleShow = async function (searchedText) {
@@ -24,7 +25,7 @@ const getSingleShow = async function (searchedText) {
             newImg.src = show.image.medium;
             imgBox.appendChild(newImg);
         }
-        getInfoShow(searchedText);
+        getInfoShow(show);
     } catch (e) {
         const newErr = document.createElement('p');
         newErr.append(`Sorry, no Tv Shows found for: ${searchedText}.`);
@@ -37,11 +38,8 @@ const getSingleShow = async function (searchedText) {
 
 
 
-const getInfoShow = async function (searchedText) {
+const getInfoShow = async function (show) {
     try {
-        const result = await axios.get(`https://api.tvmaze.com/singlesearch/shows?q=${searchedText}`);
-        const show = result.data;
-        console.log(result.data);
         // channel or network
         if (show.network) {
             // country of origin
