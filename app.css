@@ -48,25 +48,31 @@ h1 {
     background-color: #d6c093;
 }
 
+#list-of-shows {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .list-item {
     list-style: none;
-    font-weight: 700;
-    display: inline;
-    
 }
 
 .li-image {
     width: 250px;
     height: auto;
+    margin: 10px;  
 }
 
-.default-li-image {
-    width: 250px;
-    height: auto;
+.box-no-img {
+    height: 351.183px;
+    border: 1px solid black;
 }
 
-.box-default-li {
-    display: inline-block;
-    width: 250px;
-    height: auto;
+.show-name-li {
+    font-weight: 700;
+    font-size: 1.5em;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

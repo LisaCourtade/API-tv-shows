@@ -17,16 +17,14 @@ const getShows = async function (searchedText) {
             newLi.classList.add('list-item');
         } else {
             const newLi = document.createElement('li');
-            const box = document.createElement('div');
-            const defaultImg = document.createElement('img');
-            defaultImg.classList.add('default-li-image');
-            newLi.classList.add('list-item');
-            box.classList.add('box-default-li');
-            box.append(el.show.name);
-            defaultImg.src = "/slashed-image.jpg";
-            box.appendChild(defaultImg);
-            newLi.appendChild(box);
+            const newImg = document.createElement('div');
+            newImg.innerHTML = '<div>' + el.show.name + '</div>';
+            newImg.classList.add('li-image');
+            newImg.classList.add('box-no-img');
+            newImg.classList.add('show-name-li');
+            newLi.appendChild(newImg);
             list.appendChild(newLi);
+            newLi.classList.add('list-item');
         }
     }
     
